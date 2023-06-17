@@ -14,10 +14,10 @@ hero:
   actions:
     - theme: brand
       text: 随便走走
-      link: /markdown-examples
+      link: /records/index
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Github
+      link: https://github.com/dongjb/essay
 
 features:
   - title: 快乐生活

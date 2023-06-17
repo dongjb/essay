@@ -3,6 +3,10 @@
   --vp-home-hero-image-filter: blur(40px);
 }
 
+.logo {
+  background-color: #020e27;
+}
+
 @media (min-width: 768px) {
   :root {
     --vp-home-hero-image-filter: blur(72px);

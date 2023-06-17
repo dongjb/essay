@@ -1,27 +1,57 @@
+import fs from 'fs-extra';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'vitepress';
 
-// https://vitepress.dev/reference/site-config
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+const records = fs.readdirSync(path.resolve(__dirname, '../records'));
+
+const base = '/essay/';
+
 export default defineConfig({
-  base: '/essay/',
+  base,
   title: '流书随笔',
   description: '期望在这个繁杂的世界找到一丝心灵的慰藉',
+  lastUpdated: true,
+  lang: 'zh-CN',
+  cleanUrls: true,
+  head: [
+    [
+      'link',
+      {
+        rel: 'icon',
+        href: '/essay/logo.svg'
+      }
+    ]
+  ],
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
+    logo: '/logo.svg',
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '首页', link: '/' },
+      { text: '随笔', link: '/records/index' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
+        text: '随笔',
+        items: records
+          .filter(item => !item.includes('index.md'))
+          .map((item, index) => {
+            const text = item.replace('.md', '');
+            return {
+              text: `[${index + 1}] ${text}`,
+              link: `/records/${text}`
+            };
+          })
       }
     ],
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/vuejs/vitepress' }]
+    socialLinks: [{ icon: 'github', link: 'https://github.com/dongjb/essay' }],
+    lastUpdatedText: '最近更新',
+    docFooter: {
+      next: '下一篇',
+      prev: '上一篇'
+    }
   }
 });
