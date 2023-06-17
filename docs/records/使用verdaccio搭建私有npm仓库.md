@@ -15,11 +15,11 @@ categories:
 
 ## 使用 nvm 管理 node 版本
 
-[使用 nvm 管理 node 版本](./1594185494636.md)
+[使用 nvm 管理 node 版本](./使用nvm管理node版本.md)
 
 ## 使用 nrm 管理 npm 源
 
-[使用 nrm 管理 npm 源](./1594275017000.md)
+[使用 nrm 管理 npm 源](./使用nrm管理npm源.md)
 
 ## 全局安装 verdaccio
 
